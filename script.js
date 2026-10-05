@@ -14,42 +14,45 @@ async function renderExtension() {
       const divButton = document.createElement("div")
       const imgContent = document.createElement("div")
       const textContent = document.createElement("div")
-      const toggleButton = document.createElement("div")
+      const contentToggle = document.createElement("div")
 
-      divContent.className = "content-main"
-      divButton.className = "content-button"
-      imgContent.className = "img-content"
-      textContent.className = "text-content"
-      toggleButton.className = "toggle-button"
+      divContent.classList.add("content-main")
+      divButton.classList.add("content-button")
+      imgContent.classList.add("img-content")
+      textContent.classList.add("text-content")
+      contentToggle.classList.add("content-toggle")
 
       const imgCard = document.createElement("img")
       imgCard.src = item.logo
       imgCard.alt = `logo ${item.name}`
       imgContent.appendChild(imgCard)
-      divContent.appendChild(imgContent)
 
       const title = document.createElement("strong")
       const textTitle = document.createTextNode(item.name)
       title.appendChild(textTitle)
-      textContent.appendChild(title)
 
       const span = document.createElement("span")
       const textSpan = document.createTextNode(item.description)
       span.appendChild(textSpan)
-      textContent.appendChild(span)
-      divContent.appendChild(textContent)
+
+      textContent.append(title, span)
+      divContent.append(imgContent, textContent)
 
       const btnRemove = document.createElement("button")
+      btnRemove.classList.add("btn-remove")
       const textBtnRemove = document.createTextNode("Remove")
       btnRemove.appendChild(textBtnRemove)
-      divButton.appendChild(btnRemove)
 
-      const btnToggle = document.createElement("span")
-      span.className = "btn-toggle"
-      toggleButton.appendChild(btnToggle)
-      divButton.appendChild(toggleButton)
+      const btnToggle = document.createElement("input")
+      btnToggle.type = "checkbox"
+      btnToggle.id = "btn-toggle"
+      const toggle = document.createElement("span")
+      toggle.classList.add("btn-toggle")
+      contentToggle.append(btnToggle, toggle)
 
-      card.append(divContent, textContent, divButton)
+      divButton.append(btnRemove, contentToggle)
+
+      card.append(divContent, divButton)
       extension.appendChild(card)
     })
   } catch (err) {

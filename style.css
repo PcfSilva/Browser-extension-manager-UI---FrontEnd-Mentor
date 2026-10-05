@@ -29,15 +29,21 @@
 
 body {
   font-family: "NotoSans", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   background: var(--Dark-Gradient);
   color: var(--Neutral-100);
-  overflow: hidden;
+
+  & strong {
+    font-size: .875rem;
+  }
+
+  & span {
+    font-size: .75rem;
+  }
 }
 
 .container {
-  max-width: 90%;
-  height: calc(100svh - 3.75rem);
+  max-width: 85%;
   margin: 1.875rem auto;
 
   & .header {
@@ -47,7 +53,7 @@ body {
     background-color: var(--Neutral-800);
     padding: .5rem .75rem;
     border-radius: .75rem;
-    margin-bottom: 2.1875rem;
+    margin-bottom: .75rem;
 
     & .logo {
       line-height: 0;
@@ -61,5 +67,107 @@ body {
     }
   }
 
+  & .main {
+    & .filter-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .75rem;
 
+      & h1 {
+        font-size: 1.625rem;
+      }
+
+      & .filter {
+        display: flex;
+        gap: .625rem;
+
+        & button {
+          padding: .5rem .9375rem;
+          border-radius: 1.25rem;
+          border: none;
+          background-color: var(--Neutral-700);
+          color: var(--Neutral-100);
+          cursor: pointer;
+        }
+      }
+
+    }
+
+    & .extension {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(17.1875rem, 1fr));
+      gap: 1.25rem;
+
+      & article {
+        background-color: var(--Neutral-800);
+        border-radius: .75rem;
+        height: 8.125rem;
+        padding: .75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        & .content-main {
+          display: flex;
+          gap: .75rem;
+
+          & .text-content {
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+
+            & strong {
+              font-size: .875rem;
+            }
+
+            & span {
+              font-size: .75rem;
+            }
+          }
+        }
+
+        & .content-button {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          & .btn-remove {
+            background-color: transparent;
+            color: var(--Neutral-100);
+            padding: .25rem .5rem;
+            border: 1px solid var(--Neutral-100);
+            border-radius: .75rem;
+          }
+
+          & .content-toggle {
+            border-radius: 12px;
+            border: none;
+            position: relative;
+            background-color: var(--Neutral-700);
+            width: 2.1875rem;
+            height: 1.125rem;
+            padding-inline: .125rem;
+
+            & input {
+              position: absolute;
+              opacity: 0;
+              inset: 0;
+              cursor: pointer;
+              z-index: 2;
+            }
+
+            & span {
+              width: .9375rem;
+              height: .9375rem;
+              border-radius: 50%;
+              background-color: var(--Neutral-0);
+              position: absolute;
+              top: .125rem;
+            }
+          }
+        }
+      }
+    }
+  }
 }
